@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(Product product, int position) {
                 Intent i = new Intent(MainActivity.this, SaleActivity.class);
+                startActivity(i);
             }
         });
 

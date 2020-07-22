@@ -66,15 +66,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> implem
             if (constraint.toString().isEmpty()) {
                 filteredList.addAll(allProducts);
             } else {
-                for (Product product: allProducts) {
-                    if (product.name.toLowerCase().contains(constraint.toString().toLowerCase()));
-                    filteredList.add(product);
+                for (Product product : allProducts) {
+                    if (product.name.toLowerCase().contains(constraint.toString().toLowerCase()))
+                        filteredList.add(product);
                 }
             }
 
             FilterResults filterResults = new FilterResults();
             filterResults.values = filteredList;
-            return null;
+            return filterResults;
         }
 
         @Override
@@ -91,18 +91,18 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> implem
 
         public ViewHolder(View itemView) {
             super(itemView);
-            imgProduct =  itemView.findViewById(R.id.imgProduct);
-            txtCardName =  itemView.findViewById(R.id.txtCardName);
-            txtCardPrice =  itemView.findViewById(R.id.txtCardPrice);
+            imgProduct = itemView.findViewById(R.id.imgProduct);
+            txtCardName = itemView.findViewById(R.id.txtCardName);
+            txtCardPrice = itemView.findViewById(R.id.txtCardPrice);
         }
 
         public void bind(final Product product, final OnItemClickListener listener) {
-        //    Usar librería Picasso para cargar la imagen y ajustarla en el espacio
-        //    Averiguar cómo cargar la imagen
-            
+            //    Usar librería Picasso para cargar la imagen y ajustarla en el espacio
+            //    Averiguar cómo cargar la imagen
+
             Picasso.get().load(product.getImg()).error(product.getImg()).into(imgProduct);
             txtCardName.setText(product.getName());
-            txtCardPrice.setText(product.getPrice()+"");
+            txtCardPrice.setText(product.getPrice() + "");
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
