@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.5">
+
+        <ImageView
+            android:id="@+id/imgProductSale"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="40dp"/>
+
+        <TextView
+            android:id="@+id/lblQuestion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imgProductSale"
+            android:layout_centerHorizontal="true"
+            android:text="@string/question"/>
+
+        <EditText
+            android:id="@+id/txtProductQuantity"
+            android:inputType="number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lblQuestion"
+            android:gravity="bottom"
+            android:clickable="false"
+            android:layout_margin="20dp"/>
+
+    </RelativeLayout>
+
+    <GridLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.5"
+        android:padding="40dp"
+        android:layout_marginTop="60dp"
+        android:columnCount="3"
+        android:rowCount="4">
+
+        <Button
+            android:id="@+id/btnOne"
+            android:text="@string/one"
+            />
+        <Button
+            android:id="@+id/btnTwo"
+            android:text="@string/two"
+            />
+        <Button
+            android:id="@+id/btnThree"
+            android:text="@string/three"
+            />
+        <Button
+            android:id="@+id/btnFour"
+            android:text="@string/four"
+            />
+        <Button
+            android:id="@+id/btnFive"
+            android:text="@string/five"
+            />
+        <Button
+            android:id="@+id/btnSix"
+            android:text="@string/six"
+            />
+        <Button
+            android:id="@+id/btnSeven"
+            android:text="@string/seven"
+            />
+        <Button
+            android:id="@+id/btnEight"
+            android:text="@string/eight"
+            />
+        <Button
+            android:id="@+id/btnNine"
+            android:text="@string/nine"
+            />
+
+        <Button
+            android:id="@+id/btnCheck"
+            android:background="@drawable/ic_baseline_check_24"
+            />
+        <Button
+            android:id="@+id/btnZero"
+            android:text="@string/zero"
+            />
+        <Button
+            android:id="@+id/btnDelete"
+            android:background="@drawable/ic_baseline_close_24"
+            />
+
+    </GridLayout>
+
+</LinearLayout>
