@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.ClosingActivity">
+
+    <TextView
+        android:id="@+id/txtCloseTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20sp"
+        android:text="@string/cambio"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/lblTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toStartOf="@+id/txtCloseTitle"
+        android:layout_below="@id/txtCloseTitle"
+        android:layout_marginTop="30sp"
+        android:text="@string/total"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/txtFinalPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/lblTotal"
+        android:layout_below="@id/txtCloseTitle"
+        android:layout_marginTop="30sp"
+        android:layout_marginStart="30sp"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/lblPago"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lblTotal"
+        android:layout_alignStart="@id/lblTotal"
+        android:layout_marginTop="40sp"
+        android:text="@string/pago"
+        android:textSize="16sp"/>
+
+    <EditText
+        android:id="@+id/txtPayment"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtFinalPrice"
+        android:layout_toEndOf="@id/lblPago"
+        android:layout_alignBottom="@id/lblPago"
+        android:layout_marginTop="25sp"
+        android:layout_marginStart="10sp"
+        android:textSize="16sp"/>
+
+    <Button
+        android:id="@+id/btnCalc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtPayment"
+        android:layout_marginTop="10sp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/calcular"/>
+
+    <TextView
+        android:id="@+id/lblChange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/txtPayment"
+        android:layout_alignTop="@id/lblTotal"
+        android:layout_marginStart="30sp"
+        android:text="@string/vuelto"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/lblFinalResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/lblChange"
+        android:layout_alignTop="@id/lblChange"
+        android:layout_marginStart="10sp"
+        android:textSize="16sp"
+        />
+
+</RelativeLayout>

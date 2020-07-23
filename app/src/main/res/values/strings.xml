@@ -16,4 +16,8 @@
     <string name="finalize">Finalizar venta</string>
     <string name="print">Imprimir ticket</string>
     <string name="total">Total : </string>
+    <string name="cambio">Cambio</string>
+    <string name="pago">Pago : </string>
+    <string name="calcular">Calcular</string>
+    <string name="vuelto">Vuelto : </string>
 </resources>

@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.FinalActivity"></activity>
+        <activity android:name=".Activities.ClosingActivity"></activity>
+        <activity android:name=".Activities.FinalActivity" />
         <activity
             android:name=".Activities.MainActivity"
             android:screenOrientation="landscape">

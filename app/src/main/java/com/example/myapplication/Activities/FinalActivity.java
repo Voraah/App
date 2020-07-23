@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Filter;
 import android.widget.TextView;
 
 import com.example.myapplication.R;
@@ -61,6 +62,11 @@ public class FinalActivity extends AppCompatActivity {
             public void onClick(View view) {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.remove(TOTAL);
+                editor.apply();
+                Intent i = new Intent(FinalActivity.this, ClosingActivity.class);
+                i.putExtra("saleprice", Double.parseDouble(txtTotal.getText().toString()));
+                startActivity(i);
+
             }
         });
     }
