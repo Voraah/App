@@ -39,6 +39,7 @@
         android:drawableEnd="@drawable/ic_baseline_arrow_forward_24"/>
 
     <Button
+        android:id="@+id/btnPrint"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_toEndOf="@+id/btnAnotherProduct"

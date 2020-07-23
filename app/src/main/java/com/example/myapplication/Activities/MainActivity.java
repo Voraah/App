@@ -45,6 +45,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(Product product, int position) {
                 Intent i = new Intent(MainActivity.this, SaleActivity.class);
+                i.putExtra("productname", product.getName());
+                i.putExtra("productprice", product.getPrice());
+                i.putExtra("productimage", product.getImg());
+                i.putExtra("productlinkimg", product.getLinkImg());
                 startActivity(i);
             }
         });

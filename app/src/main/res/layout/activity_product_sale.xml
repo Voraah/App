@@ -16,14 +16,31 @@
             android:layout_height="150dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="50dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"/>
+
+        <TextView
+            android:id="@+id/txtSaleProductName"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imgProductSale"
+            android:layout_alignStart="@+id/imgProductSale"
+            android:layout_marginStart="30dp"
             android:layout_marginBottom="40dp"/>
+
+        <TextView
+            android:id="@+id/txtSaleProductPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imgProductSale"
+            android:layout_alignEnd="@id/imgProductSale"
+            android:textAlignment="textEnd"
+            android:layout_toEndOf="@+id/txtSaleProductName"/>
 
         <TextView
             android:id="@+id/lblQuestion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/imgProductSale"
+            android:layout_below="@id/txtSaleProductName"
             android:layout_centerHorizontal="true"
             android:text="@string/question"/>
 
