@@ -78,9 +78,9 @@ public class MainActivity extends AppCompatActivity {
     private List<Product> getAllProducts() {
         //int p = R.drawable.pan;
         products = new ArrayList<Product>();
-        products.add(new Product("Pan", 1.75, R.drawable.ic_bread, "https://harinas.monisa.com/wp-content/uploads/2018/07/Pan-casero-600x400.jpeg"));
+        products.add(new Product("Pan", 1.75, R.mipmap.pan_icon, "https://harinas.monisa.com/wp-content/uploads/2018/07/Pan-casero-600x400.jpeg"));
         products.add(new Product("Leche", 2.50, R.mipmap.leche_icon, "https://harinas.monisa.com/wp-content/uploads/2018/07/Pan-casero-600x400.jpeg"));
-        products.add(new Product("Chifon", 4.50, R.drawable.chifon_icon_background, "https://harinas.monisa.com/wp-content/uploads/2018/07/Pan-casero-600x400.jpeg"));
+        products.add(new Product("Chifon", 4.50, R.mipmap.chifon_icon, "https://harinas.monisa.com/wp-content/uploads/2018/07/Pan-casero-600x400.jpeg"));
         return products;
     }
 }

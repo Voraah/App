@@ -1,5 +1,6 @@
 package com.example.myapplication.Adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -96,13 +97,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> implem
             txtCardPrice = itemView.findViewById(R.id.txtCardPrice);
         }
 
+        @SuppressLint("SetTextI18n")
         public void bind(final Product product, final OnItemClickListener listener) {
             //    Usar librería Picasso para cargar la imagen y ajustarla en el espacio
             //    Averiguar cómo cargar la imagen
 
-            Picasso.get().load(product.getImg()).error(product.getImg()).into(imgProduct);
+            Picasso.get().load(product.getImg()).fit().error(product.getImg()).into(imgProduct);
             txtCardName.setText(product.getName());
-            txtCardPrice.setText(product.getPrice() + "");
+            txtCardPrice.setText("Price: S/." + product.getPrice());
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

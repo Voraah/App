@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FinalActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="30sp"
+        android:text="@string/total"
+        android:textSize="20sp"/>
+
+    <Button
+        android:id="@+id/btnAnotherProduct"
+        android:layout_width="246dp"
+        android:layout_height="279dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="80dp"
+        android:text="@string/request"
+        android:textSize="30sp"
+        android:drawableEnd="@drawable/ic_baseline_add_24"/>
+
+    <Button
+        android:id="@+id/btnFinalize"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginEnd="80dp"
+        android:layout_alignTop="@+id/btnAnotherProduct"
+        android:layout_toEndOf="@+id/btnAnotherProduct"
+        android:text="@string/finalize"
+        android:textSize="23sp"
+        android:drawableEnd="@drawable/ic_baseline_arrow_forward_24"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_toEndOf="@+id/btnAnotherProduct"
+        android:layout_alignBottom="@+id/btnAnotherProduct"
+        android:layout_marginEnd="80dp"
+        android:text="@string/print"
+        android:textSize="23sp"
+        android:drawableEnd="@drawable/ic_baseline_print_24"
+        />
+</RelativeLayout>

@@ -29,7 +29,7 @@
 
         <EditText
             android:id="@+id/txtProductQuantity"
-            android:inputType="number"
+            android:inputType="none"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/lblQuestion"
@@ -43,7 +43,7 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="0.5"
-        android:padding="40dp"
+        android:padding="20dp"
         android:layout_marginTop="60dp"
         android:columnCount="3"
         android:rowCount="4">
@@ -51,38 +51,47 @@
         <Button
             android:id="@+id/btnOne"
             android:text="@string/one"
+            android:onClick="numberPressed"
             />
         <Button
             android:id="@+id/btnTwo"
             android:text="@string/two"
+            android:onClick="numberPressed"
             />
         <Button
             android:id="@+id/btnThree"
             android:text="@string/three"
+            android:onClick="numberPressed"
             />
         <Button
             android:id="@+id/btnFour"
             android:text="@string/four"
+            android:onClick="numberPressed"
             />
         <Button
             android:id="@+id/btnFive"
             android:text="@string/five"
+            android:onClick="numberPressed"
             />
         <Button
             android:id="@+id/btnSix"
             android:text="@string/six"
+            android:onClick="numberPressed"
             />
         <Button
             android:id="@+id/btnSeven"
             android:text="@string/seven"
+            android:onClick="numberPressed"
             />
         <Button
             android:id="@+id/btnEight"
             android:text="@string/eight"
+            android:onClick="numberPressed"
             />
         <Button
             android:id="@+id/btnNine"
             android:text="@string/nine"
+            android:onClick="numberPressed"
             />
 
         <Button
@@ -92,6 +101,7 @@
         <Button
             android:id="@+id/btnZero"
             android:text="@string/zero"
+            android:onClick="numberPressed"
             />
         <Button
             android:id="@+id/btnDelete"

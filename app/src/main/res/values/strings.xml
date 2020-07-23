@@ -12,5 +12,8 @@
     <string name="eight">8</string>
     <string name="nine">9</string>
     <string name="zero">0</string>
-
+    <string name="request">Agregar producto al pedido</string>
+    <string name="finalize">Finalizar venta</string>
+    <string name="print">Imprimir ticket</string>
+    <string name="total">Total : </string>
 </resources>
