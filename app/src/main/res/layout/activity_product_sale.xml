@@ -13,9 +13,9 @@
         <ImageView
             android:id="@+id/imgProductSale"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="120dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="30dp"
             android:layout_marginStart="20dp"/>
 
         <TextView
@@ -25,7 +25,7 @@
             android:layout_below="@id/imgProductSale"
             android:layout_alignStart="@+id/imgProductSale"
             android:layout_marginStart="30dp"
-            android:layout_marginBottom="40dp"/>
+            android:layout_marginBottom="20dp"/>
 
         <TextView
             android:id="@+id/txtSaleProductPrice"
@@ -46,13 +46,10 @@
 
         <EditText
             android:id="@+id/txtProductQuantity"
-            android:inputType="none"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_below="@+id/lblQuestion"
-            android:gravity="bottom"
-            android:clickable="false"
-            android:layout_margin="20dp"/>
+            android:gravity="bottom"/>
 
     </RelativeLayout>
 
