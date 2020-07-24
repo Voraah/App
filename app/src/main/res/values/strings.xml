@@ -20,4 +20,8 @@
     <string name="pago">Pago : </string>
     <string name="calcular">Calcular</string>
     <string name="vuelto">Vuelto : </string>
+    <string name="ticket">Ticket de Compra</string>
+    <string name="product">Producto</string>
+    <string name="quantity">Cantidad</string>
+    <string name="costo">Costo</string>
 </resources>
