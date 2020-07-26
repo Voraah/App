@@ -2,6 +2,7 @@ package com.example.myapplication.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,10 +12,16 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.Models.Product;
 import com.example.myapplication.R;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SaleActivity extends AppCompatActivity {
+
+    private List<Product> ticketList = new ArrayList<Product>();
 
     private EditText txtQuantity;
     private TextView txtSaleProductName, txtSaleProductPrice;
@@ -50,7 +57,11 @@ public class SaleActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (!txtQuantity.getText().toString().equals("") && quantity != 0) {
+                //    ticketList.add(new Product(productname, Integer.parseInt(""+quantity), quantity*productPrice));
                     Intent i = new Intent(SaleActivity.this, FinalActivity.class);
+                //    Bundle bundle  = new Bundle();
+                //    bundle.putParcelableArrayList("ticketList", (ArrayList<? extends Parcelable>) ticketList);
+                //    i.putExtras(bundle);
                     i.putExtra("saleprice", productPrice * quantity);
                     startActivity(i);
                 } else {

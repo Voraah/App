@@ -11,9 +11,15 @@ import android.widget.Button;
 import android.widget.Filter;
 import android.widget.TextView;
 
+import com.example.myapplication.Models.Product;
 import com.example.myapplication.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class FinalActivity extends AppCompatActivity {
+
+    private ArrayList<? extends Product> ticketList = new ArrayList<Product>();
 
     private TextView txtTotal;
     private Button btnAnotherProduct, btnFinalize, btnPrint;
@@ -39,6 +45,8 @@ public class FinalActivity extends AppCompatActivity {
 
         loadData();
 
+    //    Bundle bundle = new Bundle();
+    //    ticketList =  bundle.getParcelableArrayList("ticketList");
         totalsale = getIntent().getExtras().getDouble("saleprice");
 
         if(total.equals("")) {

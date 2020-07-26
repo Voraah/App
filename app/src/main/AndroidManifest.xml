@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TicketActivity"></activity>
+        <activity android:name=".Activities.TicketActivity"></activity>
         <activity android:name=".Activities.ClosingActivity" />
         <activity android:name=".Activities.FinalActivity" />
         <activity

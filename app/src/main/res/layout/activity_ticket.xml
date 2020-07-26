@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TicketActivity">
+    tools:context=".Activities.TicketActivity">
 
     <TextView
         android:id="@+id/lblTicketTitle"
@@ -40,7 +40,18 @@
         android:layout_below="@+id/lblTicketTitle"
         android:layout_toEndOf="@+id/lblTicketTitle"
         android:layout_marginStart="20dp"
-        android:text="@string/product"
+        android:text="@string/costo"
         android:textSize="20sp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvTicketList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/lblTicketProduct"
+        android:layout_alignStart="@id/lblTicketProduct"
+        android:layout_alignEnd="@id/lblTicketCost"
+        android:layout_marginTop="10sp"
+        android:layout_marginBottom="20sp"
+        android:scrollbars="vertical"/>
 
 </RelativeLayout>
