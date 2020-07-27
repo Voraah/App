@@ -77,6 +77,14 @@ public class FinalActivity extends AppCompatActivity {
 
             }
         });
+
+        btnPrint.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(FinalActivity.this, TicketActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
     private void saveData() {

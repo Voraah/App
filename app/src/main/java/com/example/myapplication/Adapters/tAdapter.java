@@ -32,14 +32,14 @@ public class tAdapter extends RecyclerView.Adapter<tAdapter.ViewHolder> {
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(layout, parent, false);
-        tAdapter.ViewHolder viewHolder = new tAdapter.ViewHolder(v);
+        ViewHolder viewHolder = new ViewHolder(v);
         context = parent.getContext();
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.bind(tckProductList.get(position), itemClickListener);
+        holder.bindT(tckProductList.get(position), itemClickListener);
     }
 
     @Override
@@ -57,7 +57,7 @@ public class tAdapter extends RecyclerView.Adapter<tAdapter.ViewHolder> {
             txtProductCost = itemView.findViewById(R.id.txtTicketProductCost);
         }
 
-        public void bind(final Product product, final tAdapter.OnItemClickListener listener) {
+        public void bindT(final Product product, final tAdapter.OnItemClickListener listener) {
             txtProductName.setText(product.getName());
             txtProductQuantity.setText(product.getQuantity());
             txtProductCost.setText("" + product.getCost());

@@ -99,8 +99,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> implem
 
         @SuppressLint("SetTextI18n")
         public void bind(final Product product, final OnItemClickListener listener) {
-            //    Usar librería Picasso para cargar la imagen y ajustarla en el espacio
-            //    Averiguar cómo cargar la imagen
 
             Picasso.get().load(product.getImg()).fit().error(product.getImg()).into(imgProduct);
             txtCardName.setText(product.getName());

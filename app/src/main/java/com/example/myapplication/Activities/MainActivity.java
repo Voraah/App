@@ -5,8 +5,12 @@ import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.view.Menu;
@@ -17,6 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.Adapters.MyAdapter;
 import com.example.myapplication.Models.Product;
+import com.example.myapplication.Models.ProductSQLiteHelper;
 import com.example.myapplication.R;
 
 import java.util.ArrayList;
@@ -28,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
     private List<Product> allProducts;
     private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
+    private SQLiteOpenHelper productHelper;
+    private SQLiteDatabase db;
     private MyAdapter mAdapter;
 
     private int counter = 0;
@@ -48,6 +55,10 @@ public class MainActivity extends AppCompatActivity {
             cleanSP();
 
         isNotFirstTime();
+        insertData();
+        productHelper = new ProductSQLiteHelper(this, "DBTest1", null, 1);
+        db = productHelper.getWritableDatabase();
+
         products = getAllProducts();
 
         mRecyclerView = findViewById(R.id.rvProducts);
@@ -67,6 +78,8 @@ public class MainActivity extends AppCompatActivity {
 
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(mLayoutManager);
+
+        update();
     }
 
     //Menú para barra de búsqueda
@@ -92,12 +105,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private List<Product> getAllProducts() {
-        //int p = R.drawable.pan;
+        /*
         products = new ArrayList<Product>();
         products.add(new Product("Pan", 1.75, R.mipmap.pan_icon, "https://harinas.monisa.com/wp-content/uploads/2018/07/Pan-casero-600x400.jpeg"));
         products.add(new Product("Leche", 2.50, R.mipmap.leche_icon, "https://harinas.monisa.com/wp-content/uploads/2018/07/Pan-casero-600x400.jpeg"));
-        products.add(new Product("Chifon", 4.50, R.mipmap.chifon_icon, "https://harinas.monisa.com/wp-content/uploads/2018/07/Pan-casero-600x400.jpeg"));
-        return products;
+        products.add(new Product("Chifon", 4.50, R.mipmap.chifon_icon, "https://harinas.monisa.com/wp-content/uploads/2018/07/Pan-casero-600x400.jpeg")); */
+
+        Cursor cursor = db.rawQuery("select * from Products", null);
+        List<Product> list = new ArrayList<Product>();
+
+        if (cursor.moveToFirst()) {
+            while (cursor.isAfterLast()) {
+                String name = cursor.getString(cursor.getColumnIndex("name"));
+                double price = cursor.getDouble(cursor.getColumnIndex("price"));
+                int img = cursor.getInt(cursor.getColumnIndex("img"));
+                String imgLink = cursor.getString(cursor.getColumnIndex("imglink"));
+
+                list.add(new Product(name, price, img, imgLink));
+                cursor.moveToNext();
+            }
+        }
+        cursor.close();
+        return list;
     }
 
     private void cleanSP(){
@@ -111,4 +140,45 @@ public class MainActivity extends AppCompatActivity {
         editor.putString(ISFIRST, "1");
         editor.apply();
     }
+
+    private void update() {
+        products.clear();
+        products.addAll(getAllProducts());
+        mAdapter.notifyDataSetChanged();
+    }
+
+    private void removeAll() {
+        db.delete("Products", "", null);
+    }
+
+    private void insertData() {
+        //Insertar data, incluido borrar en caso de errores
+        //Borrando data anterior
+        Cursor c = db.rawQuery("delete from Products", null);
+        c.moveToFirst();
+        while (c.isAfterLast()) {
+            c.moveToNext();
+        }
+        c.close();
+        //Reinsertando data
+        ContentValues values = new ContentValues();
+        values.put("name", "Pan");
+        values.put("price", 1.75);
+        values.put("img", R.mipmap.pan_icon);
+        values.put("imglink", "https://harinas.monisa.com/wp-content/uploads/2018/07/Pan-casero-600x400.jpeg");
+        db.insert("Products", null, values);
+        values = new ContentValues();
+        values.put("name", "Leche");
+        values.put("price", 2.5);
+        values.put("img", R.mipmap.leche_icon);
+        values.put("imglink", "https://harinas.monisa.com/wp-content/uploads/2018/07/Pan-casero-600x400.jpeg");
+        db.insert("Products", null, values);
+        values = new ContentValues();
+        values.put("name", "Chifon");
+        values.put("price", 4.5);
+        values.put("img", R.mipmap.chifon_icon);
+        values.put("imglink", "https://harinas.monisa.com/wp-content/uploads/2018/07/Pan-casero-600x400.jpeg");
+        db.insert("Products", null, values);
+    }
+
 }
