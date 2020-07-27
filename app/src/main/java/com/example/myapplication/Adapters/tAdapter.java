@@ -16,50 +16,55 @@ import java.util.List;
 
 public class tAdapter extends RecyclerView.Adapter<tAdapter.ViewHolder> {
 
-    private List<Product> tckProductList;
-    private OnItemClickListener itemClickListener;
-
+    private List<Product> movies;
     private int layout;
+    private OnItemClickListener itemClickListener;
 
     private Context context;
 
-    public tAdapter(List<Product> tckProductList, int layout, OnItemClickListener listener) {
-        this.tckProductList = tckProductList;
+
+    public tAdapter(List<Product> movies, int layout, OnItemClickListener listener) {
+        this.movies = movies;
         this.layout = layout;
         this.itemClickListener = listener;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        // Inflamos el layout y se lo pasamos al constructor del ViewHolder, donde manejaremos
+        // toda la lógica como extraer los datos, referencias...
         View v = LayoutInflater.from(parent.getContext()).inflate(layout, parent, false);
-        ViewHolder viewHolder = new ViewHolder(v);
         context = parent.getContext();
-        return viewHolder;
+        ViewHolder vh = new ViewHolder(v);
+        return vh;
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.bindT(tckProductList.get(position), itemClickListener);
+        // Llamamos al método Bind del ViewHolder pasándole objeto y listener
+        holder.bind(movies.get(position), itemClickListener);
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return movies.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView txtProductName, txtProductQuantity, txtProductCost;
 
         public ViewHolder(View itemView) {
+            // Recibe la View completa. La pasa al constructor padre y enlazamos referencias UI
+            // con nuestras propiedades ViewHolder declaradas justo arriba.
             super(itemView);
             txtProductName = itemView.findViewById(R.id.txtTicketProductName);
             txtProductQuantity = itemView.findViewById(R.id.txtTicketProductQuantity);
             txtProductCost = itemView.findViewById(R.id.txtTicketProductCost);
         }
 
-        public void bindT(final Product product, final tAdapter.OnItemClickListener listener) {
+        public void bind(final Product product, final OnItemClickListener listener) {
             txtProductName.setText(product.getName());
-            txtProductQuantity.setText(product.getQuantity());
+            txtProductQuantity.setText(product.getQuantity() + "");
             txtProductCost.setText("" + product.getCost());
 
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -71,6 +76,7 @@ public class tAdapter extends RecyclerView.Adapter<tAdapter.ViewHolder> {
         }
     }
 
+    // Declaramos nuestra interfaz con el/los método/s a implementar
     public interface OnItemClickListener {
         void onItemClick(Product product, int position);
     }

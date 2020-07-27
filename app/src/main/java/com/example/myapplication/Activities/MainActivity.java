@@ -55,9 +55,11 @@ public class MainActivity extends AppCompatActivity {
             cleanSP();
 
         isNotFirstTime();
-        insertData();
+
         productHelper = new ProductSQLiteHelper(this, "DBTest1", null, 1);
         db = productHelper.getWritableDatabase();
+        removeAll();
+        insertData();
 
         products = getAllProducts();
 
@@ -115,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
         List<Product> list = new ArrayList<Product>();
 
         if (cursor.moveToFirst()) {
-            while (cursor.isAfterLast()) {
+            while (cursor.isAfterLast() == false) {
                 String name = cursor.getString(cursor.getColumnIndex("name"));
                 double price = cursor.getDouble(cursor.getColumnIndex("price"));
                 int img = cursor.getInt(cursor.getColumnIndex("img"));
@@ -154,31 +156,33 @@ public class MainActivity extends AppCompatActivity {
     private void insertData() {
         //Insertar data, incluido borrar en caso de errores
         //Borrando data anterior
-        Cursor c = db.rawQuery("delete from Products", null);
+        /*Cursor c = db.rawQuery("delete from Products", null);
         c.moveToFirst();
         while (c.isAfterLast()) {
             c.moveToNext();
         }
-        c.close();
+        c.close();*/
         //Reinsertando data
-        ContentValues values = new ContentValues();
-        values.put("name", "Pan");
-        values.put("price", 1.75);
-        values.put("img", R.mipmap.pan_icon);
-        values.put("imglink", "https://harinas.monisa.com/wp-content/uploads/2018/07/Pan-casero-600x400.jpeg");
-        db.insert("Products", null, values);
-        values = new ContentValues();
-        values.put("name", "Leche");
-        values.put("price", 2.5);
-        values.put("img", R.mipmap.leche_icon);
-        values.put("imglink", "https://harinas.monisa.com/wp-content/uploads/2018/07/Pan-casero-600x400.jpeg");
-        db.insert("Products", null, values);
-        values = new ContentValues();
-        values.put("name", "Chifon");
-        values.put("price", 4.5);
-        values.put("img", R.mipmap.chifon_icon);
-        values.put("imglink", "https://harinas.monisa.com/wp-content/uploads/2018/07/Pan-casero-600x400.jpeg");
-        db.insert("Products", null, values);
+        if(db!=null) {
+            ContentValues values = new ContentValues();
+            values.put("name", "Pan");
+            values.put("price", 1.75);
+            values.put("img", R.mipmap.pan_icon);
+            values.put("imglink", "https://harinas.monisa.com/wp-content/uploads/2018/07/Pan-casero-600x400.jpeg");
+            db.insert("Products", null, values);
+            values = new ContentValues();
+            values.put("name", "Leche");
+            values.put("price", 2.5);
+            values.put("img", R.mipmap.leche_icon);
+            values.put("imglink", "https://harinas.monisa.com/wp-content/uploads/2018/07/Pan-casero-600x400.jpeg");
+            db.insert("Products", null, values);
+            values = new ContentValues();
+            values.put("name", "Chifon");
+            values.put("price", 4.5);
+            values.put("img", R.mipmap.chifon_icon);
+            values.put("imglink", "https://harinas.monisa.com/wp-content/uploads/2018/07/Pan-casero-600x400.jpeg");
+            db.insert("Products", null, values);
+        }
     }
 
 }
