@@ -16,15 +16,15 @@ import java.util.List;
 
 public class tAdapter extends RecyclerView.Adapter<tAdapter.ViewHolder> {
 
-    private List<Product> movies;
+    private List<Product> productList;
     private int layout;
     private OnItemClickListener itemClickListener;
 
     private Context context;
 
 
-    public tAdapter(List<Product> movies, int layout, OnItemClickListener listener) {
-        this.movies = movies;
+    public tAdapter(List<Product> products, int layout, OnItemClickListener listener) {
+        this.productList = products;
         this.layout = layout;
         this.itemClickListener = listener;
     }
@@ -42,12 +42,12 @@ public class tAdapter extends RecyclerView.Adapter<tAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         // Llamamos al método Bind del ViewHolder pasándole objeto y listener
-        holder.bind(movies.get(position), itemClickListener);
+        holder.bind(productList.get(position), itemClickListener);
     }
 
     @Override
     public int getItemCount() {
-        return movies.size();
+        return productList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

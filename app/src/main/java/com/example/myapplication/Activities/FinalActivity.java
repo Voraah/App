@@ -13,13 +13,14 @@ import android.widget.TextView;
 
 import com.example.myapplication.Models.Product;
 import com.example.myapplication.R;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class FinalActivity extends AppCompatActivity {
 
-    private ArrayList<? extends Product> ticketList = new ArrayList<Product>();
+    private List<Product> ticketList = new ArrayList<>();
 
     private TextView txtTotal;
     private Button btnAnotherProduct, btnFinalize, btnPrint;
@@ -30,6 +31,7 @@ public class FinalActivity extends AppCompatActivity {
 
     private String total;
     private SharedPreferences sharedPreferences;
+    private Gson gson = new Gson();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +47,6 @@ public class FinalActivity extends AppCompatActivity {
 
         loadData();
 
-    //    Bundle bundle = new Bundle();
-    //    ticketList =  bundle.getParcelableArrayList("ticketList");
         totalsale = getIntent().getExtras().getDouble("saleprice");
 
         if(total.equals("")) {
@@ -81,7 +81,9 @@ public class FinalActivity extends AppCompatActivity {
         btnPrint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String json = gson.toJson(ticketList);
                 Intent i = new Intent(FinalActivity.this, TicketActivity.class);
+                i.putExtra("ticketList", json);
                 startActivity(i);
             }
         });

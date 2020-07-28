@@ -24,4 +24,5 @@
     <string name="product">Producto</string>
     <string name="quantity">Cantidad</string>
     <string name="costo">Costo</string>
+    <string name="empty"> </string>
 </resources>

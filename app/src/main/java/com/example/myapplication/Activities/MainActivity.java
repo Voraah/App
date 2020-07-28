@@ -38,11 +38,12 @@ public class MainActivity extends AppCompatActivity {
     private MyAdapter mAdapter;
 
     private int counter = 0;
-
+    //Shared Preferences para el precio
     private static final String SHARED_PREFS = "sharedPrefs";
     private static final String TOTAL = "total";
     private static final String ISFIRST = "isFirst";
     private SharedPreferences sharedPreferences;
+    private SharedPreferences sharedPreferencesList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,10 +59,14 @@ public class MainActivity extends AppCompatActivity {
 
         productHelper = new ProductSQLiteHelper(this, "DBTest1", null, 1);
         db = productHelper.getWritableDatabase();
+        //Borrar datos para tests y evitar incremento excesivo
         removeAll();
+        //Reinsertar data
         insertData();
-
+        //Obtener lista de productos
         products = getAllProducts();
+        //Procedimiento para cargar y transferir la lista
+        sharedPreferencesList = getSharedPreferences("USER", MODE_PRIVATE);
 
         mRecyclerView = findViewById(R.id.rvProducts);
         mLayoutManager = new LinearLayoutManager(this);
@@ -107,11 +112,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private List<Product> getAllProducts() {
-        /*
-        products = new ArrayList<Product>();
-        products.add(new Product("Pan", 1.75, R.mipmap.pan_icon, "https://harinas.monisa.com/wp-content/uploads/2018/07/Pan-casero-600x400.jpeg"));
-        products.add(new Product("Leche", 2.50, R.mipmap.leche_icon, "https://harinas.monisa.com/wp-content/uploads/2018/07/Pan-casero-600x400.jpeg"));
-        products.add(new Product("Chifon", 4.50, R.mipmap.chifon_icon, "https://harinas.monisa.com/wp-content/uploads/2018/07/Pan-casero-600x400.jpeg")); */
 
         Cursor cursor = db.rawQuery("select * from Products", null);
         List<Product> list = new ArrayList<Product>();
@@ -154,14 +154,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void insertData() {
-        //Insertar data, incluido borrar en caso de errores
-        //Borrando data anterior
-        /*Cursor c = db.rawQuery("delete from Products", null);
-        c.moveToFirst();
-        while (c.isAfterLast()) {
-            c.moveToNext();
-        }
-        c.close();*/
         //Reinsertando data
         if(db!=null) {
             ContentValues values = new ContentValues();
